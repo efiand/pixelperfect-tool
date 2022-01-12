@@ -15,10 +15,10 @@
 
 ```html
 <script>
-	window.pinegladePP = {
-		breakpoints: [320, 768, 1260, 1380, 1600],
-		folder: 'img/pixelperfect'
-	}
+  window.pinegladePP = {
+    breakpoints: [320, 768, 1260, 1380, 1600],
+    folder: 'img/pixelperfect'
+  }
 </script>
 <script src="https://efiand.github.io/pineglade-pp/pineglade-pp.min.js"></script>
 ```
@@ -28,18 +28,20 @@
 * `npm i -DE https://github.com/efiand/pineglade-pp.git`
 
 * Добавление кода как есть в систему сборки
+
 ```js
 export * from 'pineglade-pp/loader.js';
 ```
 Опции необходимо добавить вне бандла, как в примере выше.
 
 * Добавление модуля в систему сборки (позволяет сконфигурировать опции внутри бандла):
+
 ```js
 import loadPP from 'pineglade-pp';
 
 window.pinegladePP = {
-	breakpoints: [320, 768, 1260, 1380, 1600],
-	folder: 'img/pixelperfect'
+  breakpoints: [320, 768, 1260, 1380, 1600],
+  folder: 'img/pixelperfect'
 }
 
 loadPP();
