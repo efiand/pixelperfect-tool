@@ -21,6 +21,7 @@ export default () => {
       } = window.pinegladePP || {};
 
       this._isPP = Boolean(Number(localStorage.getItem('pp') || 0));
+      this._isInvert = Boolean(Number(localStorage.getItem('ppInvert') || 1));
 
       this._breakpoints = breakpoints ? Array.from(new Set(breakpoints)).sort(sortBP) : DEFAULT_BREAKPOINTS;
       this._currentBreakpoint = 0;
@@ -49,6 +50,7 @@ export default () => {
       this._changeScreenMode();
       this._setOffsets();
       this._managePP();
+      this._manageInvert();
 
       window.addEventListener('resize', this._changeScreenMode);
       document.addEventListener('keydown', this._keydownHandler);
@@ -78,6 +80,9 @@ export default () => {
         evt.preventDefault();
         this._isPP = !this._isPP;
         this._managePP();
+      } else if (this._isPP && evt.code === 'KeyI') {
+        this._isInvert = !this._isInvert;
+        this._manageInvert();
       } else if (this._isPP && evt.code === 'ArrowUp') {
         evt.preventDefault();
         this._movePP(0, -1);
@@ -103,6 +108,11 @@ export default () => {
       localStorage.setItem('pp', Number(this._isPP));
     }
 
+    _manageInvert() {
+      document.body.style.setProperty(`--pp-filter`, this._isInvert ? 'invert(1)' : 'none');
+      localStorage.setItem('ppInvert', Number(this._isInvert));
+    }
+
     _movePP(x, y) {
       this._offsets[this._page][this._currentBreakpoint][0] += x;
       this._offsets[this._page][this._currentBreakpoint][1] += y;
@@ -126,7 +136,7 @@ export default () => {
     }
   }
 
-  document.head.insertAdjacentHTML('beforeend', `<style>.pineglade-pp{position:relative;overflow-x:hidden}.pineglade-pp::after{content:"";position:absolute;top:0;right:0;bottom:0;left:0;background-image:var(--pp-img);background-repeat:no-repeat;background-position:50% 0;transform:translate(var(--pp-offset-x),var(--pp-offset-y));opacity:.5;filter:invert(1);pointer-events:none}</style>`);
+  document.head.insertAdjacentHTML('beforeend', `<style>.pineglade-pp{position:relative;overflow-x:hidden}.pineglade-pp::after{content:"";position:absolute;top:0;right:0;bottom:0;left:0;z-index:1000000;background-image:var(--pp-img);background-repeat:no-repeat;background-position:50% 0;transform:translate(var(--pp-offset-x),var(--pp-offset-y));opacity:.5;filter:var(--pp-filter);pointer-events:none}</style>`);
 
   new Pixelperfect();
 }
