@@ -18,7 +18,7 @@
   window.pinegladePP = {
     breakpoints: [320, 768, 1260, 1380, 1600],
     folder: 'img/pixelperfect'
-  }
+  };
 </script>
 <script src="https://efiand.github.io/pineglade-pp/pineglade-pp.min.js"></script>
 ```
@@ -42,7 +42,7 @@ import loadPP from 'pineglade-pp';
 window.pinegladePP = {
   breakpoints: [320, 768, 1260, 1380, 1600],
   folder: 'img/pixelperfect'
-}
+};
 
 loadPP();
 ```
