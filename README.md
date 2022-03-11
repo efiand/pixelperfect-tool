@@ -1,4 +1,4 @@
-# pineglade-pp
+# pineglade-pp [![npm version](https://img.shields.io/npm/v/pineglade-pp.svg)](https://www.npmjs.com/package/pineglade-pp)
 
 Модуль для накладывания скриншотов макетов поверх верстаемых страниц.
 Позволяет:
