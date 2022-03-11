@@ -83,6 +83,9 @@ export default () => {
       } else if (this._isPP && evt.code === 'KeyI') {
         this._isInvert = !this._isInvert;
         this._manageInvert();
+      } else if (this._isPP && evt.code === 'KeyR') {
+        localStorage.removeItem('ppOffsets');
+        window.location.reload();
       } else if (this._isPP && evt.code === 'ArrowUp') {
         evt.preventDefault();
         this._movePP(0, -1);
