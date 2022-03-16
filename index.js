@@ -8,6 +8,12 @@ export default () => {
   const DEFAULT_BREAKPOINTS = [320, 768, 1260];
   const DEFAULT_FOLDER = 'pixelperfect';
   const DEFAULT_EXT = 'jpg';
+  const COORDINATE_STEPS = {
+    ArrowUp: [0, -1],
+    ArrowDown: [0, 1],
+    ArrowLeft: [-1, 0],
+    ArrowRight: [1, 0],
+  }
 
   const sortBP = (a, b) => a - b;
 
@@ -60,15 +66,13 @@ export default () => {
       const { clientWidth } = document.body;
       let currentBreakpoint = 0;
       for (const breakpoint of this._breakpoints) {
-        if (clientWidth >= breakpoint) {
-          currentBreakpoint = breakpoint;
-        }
+        if (clientWidth < breakpoint) continue;
+        currentBreakpoint = breakpoint;
       }
-      if (this._currentBreakpoint !== currentBreakpoint) {
-        this._currentBreakpoint = currentBreakpoint;
-        this._setBgProperty(this._currentBreakpoint);
-        this._setOffsets();
-      }
+      if (this._currentBreakpoint === currentBreakpoint) return;
+      this._currentBreakpoint = currentBreakpoint;
+      this._setBgProperty(this._currentBreakpoint);
+      this._setOffsets();
     }
 
     _keydownHandler(evt) {
@@ -86,28 +90,16 @@ export default () => {
       } else if (this._isPP && evt.code === 'KeyR') {
         localStorage.removeItem('ppOffsets');
         window.location.reload();
-      } else if (this._isPP && evt.code === 'ArrowUp') {
+      } else if (this._isPP) {
+        const steps = COORDINATE_STEPS[evt.code];
+        if (!steps) return;
         evt.preventDefault();
-        this._movePP(0, -1);
-      } else if (this._isPP && evt.code === 'ArrowDown') {
-        evt.preventDefault();
-        this._movePP(0, 1);
-      } else if (this._isPP && evt.code === 'ArrowLeft') {
-        evt.preventDefault();
-        this._movePP(-1, 0);
-      } else if (this._isPP && evt.code === 'ArrowRight') {
-        evt.preventDefault();
-        this._movePP(1, 0);
+        this._movePP(...steps);
       }
     }
 
     _managePP() {
-      if (this._isPP) {
-        document.body.classList.add(PP_CLASS);
-      } else {
-        document.body.classList.remove(PP_CLASS);
-      }
-
+      document.body.classList.toggle(PP_CLASS, this._isPP);
       localStorage.setItem('pp', Number(this._isPP));
     }
 
