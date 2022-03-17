@@ -17,6 +17,8 @@ export default () => {
 
   const sortBP = (a, b) => a - b;
 
+  const checkModPressed = (evt) => evt.ctrlKey || evt.shiftKey || evt.altKey || evt.metaKey;
+
   class Pixelperfect {
     constructor() {
       const {
@@ -65,18 +67,25 @@ export default () => {
     _changeScreenMode() {
       const { clientWidth } = document.body;
       let currentBreakpoint = 0;
+
       for (const breakpoint of this._breakpoints) {
-        if (clientWidth < breakpoint) continue;
+        if (clientWidth < breakpoint) {
+          continue;
+        }
         currentBreakpoint = breakpoint;
       }
-      if (this._currentBreakpoint === currentBreakpoint) return;
+
+      if (this._currentBreakpoint === currentBreakpoint) {
+        return;
+      }
+
       this._currentBreakpoint = currentBreakpoint;
       this._setBgProperty(this._currentBreakpoint);
       this._setOffsets();
     }
 
     _keydownHandler(evt) {
-      if (document.activeElement !== document.body) {
+      if (document.activeElement !== document.body || checkModPressed(evt)) {
         return;
       }
 
@@ -85,14 +94,19 @@ export default () => {
         this._isPP = !this._isPP;
         this._managePP();
       } else if (this._isPP && evt.code === 'KeyI') {
+        evt.preventDefault();
         this._isInvert = !this._isInvert;
         this._manageInvert();
       } else if (this._isPP && evt.code === 'KeyR') {
+        evt.preventDefault();
         localStorage.removeItem('ppOffsets');
         window.location.reload();
       } else if (this._isPP) {
         const steps = COORDINATE_STEPS[evt.code];
-        if (!steps) return;
+        if (!steps) {
+          return;
+        }
+
         evt.preventDefault();
         this._movePP(...steps);
       }
