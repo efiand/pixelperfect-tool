@@ -134,7 +134,7 @@ export default () => {
     }
 
     _setBgProperty(breakpoint = 0) {
-      const bg = breakpoint ? `url(${this._folder}/${this._page}-${breakpoint}.${this._ext})` : 'none';
+      const bg = breakpoint ? `url("${this._folder}/${this._page}-${breakpoint}.${this._ext}")` : 'none';
       document.body.style.setProperty(`--pp-img`, bg);
     }
 
