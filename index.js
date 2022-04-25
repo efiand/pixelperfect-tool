@@ -5,7 +5,7 @@ export default () => {
 
   const PP_CLASS = 'pineglade-pp'
   const DEFAUL_PAGE = 'index';
-  const DEFAULT_BREAKPOINTS = [320, 768, 1260];
+  const DEFAULT_BREAKPOINTS = [320, 768, 1240];
   const DEFAULT_FOLDER = 'pixelperfect';
   const DEFAULT_EXT = 'jpg';
   const COORDINATE_STEPS = {
@@ -25,7 +25,8 @@ export default () => {
         page = null,
         breakpoints = null,
         folder = DEFAULT_FOLDER,
-        ext = DEFAULT_EXT
+        ext = DEFAULT_EXT,
+        selector = 'body'
       } = window.pinegladePP || {};
 
       this._isPP = Boolean(Number(localStorage.getItem('pp') || 0));
@@ -35,6 +36,7 @@ export default () => {
       this._currentBreakpoint = 0;
       this._folder = folder;
       this._ext = ext;
+      this._PPElement = document.querySelector(selector);
 
       if (!page) {
         const [, currentPage = null] = window.location.pathname.match(/^\/?(.*?)(\.html?)?$/) || [];
@@ -65,7 +67,7 @@ export default () => {
     }
 
     _changeScreenMode() {
-      const { clientWidth } = document.body;
+      const { clientWidth } = this._PPElement;
       let currentBreakpoint = 0;
 
       for (const breakpoint of this._breakpoints) {
@@ -113,12 +115,12 @@ export default () => {
     }
 
     _managePP() {
-      document.body.classList.toggle(PP_CLASS, this._isPP);
+      this._PPElement.classList.toggle(PP_CLASS, this._isPP);
       localStorage.setItem('pp', Number(this._isPP));
     }
 
     _manageInvert() {
-      document.body.style.setProperty(`--pp-filter`, this._isInvert ? 'invert(1)' : 'none');
+      this._PPElement.style.setProperty(`--pp-filter`, this._isInvert ? 'invert(1)' : 'none');
       localStorage.setItem('ppInvert', Number(this._isInvert));
     }
 
@@ -135,13 +137,13 @@ export default () => {
 
     _setBgProperty(breakpoint = 0) {
       const bg = breakpoint ? `url("${this._folder}/${this._page}-${breakpoint}.${this._ext}")` : 'none';
-      document.body.style.setProperty(`--pp-img`, bg);
+      this._PPElement.style.setProperty(`--pp-img`, bg);
     }
 
     _setOffsets() {
       const [x = 0, y = 0] = this._offsets[this._page][this._currentBreakpoint] || [];
-      document.body.style.setProperty('--pp-offset-x', `${x}px`);
-      document.body.style.setProperty('--pp-offset-y', `${y}px`);
+      this._PPElement.style.setProperty('--pp-offset-x', `${x}px`);
+      this._PPElement.style.setProperty('--pp-offset-y', `${y}px`);
     }
   }
 
