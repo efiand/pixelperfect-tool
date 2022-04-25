@@ -3,6 +3,10 @@
 Undescribed versions are deprecated.
 
 
+## 1.1.4
+* Change the implementation of offsets to from `transform` to `background-position`. This will avoid scrollbars when associating a layer with an arbitrary selector inside the `body`.
+
+
 ## 1.1.2
 
 * Add custom selector for `.pineglade-pp` element (`window.pinegladePP.selector`). Default value is `body` (for compatibility with previous versions).

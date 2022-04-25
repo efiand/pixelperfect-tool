@@ -147,7 +147,7 @@ export default () => {
     }
   }
 
-  document.head.insertAdjacentHTML('beforeend', `<style>.pineglade-pp{position:relative;overflow-x:hidden}.pineglade-pp::after{content:"";position:absolute;top:0;right:0;bottom:0;left:0;z-index:1000000;background-image:var(--pp-img);background-repeat:no-repeat;background-position:50% 0;transform:translate(var(--pp-offset-x),var(--pp-offset-y));opacity:.5;filter:var(--pp-filter);pointer-events:none}</style>`);
+  document.head.insertAdjacentHTML('beforeend', `<style>.pineglade-pp{position:relative;overflow-x:hidden;overflow-y:auto}.pineglade-pp::after{content:"";position:absolute;top:0;right:0;bottom:0;left:0;z-index:1000000;background-image:var(--pp-img);background-repeat:no-repeat;background-position:calc(50% + var(--pp-offset-x)) var(--pp-offset-y);opacity:.5;filter:var(--pp-filter);pointer-events:none}</style>`);
 
   new Pixelperfect();
 }
