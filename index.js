@@ -3,7 +3,7 @@ export default () => {
     return;
   }
 
-  const PP_CLASS = 'pineglade-pp'
+  const PP_CLASS = 'pixelperfect'
   const DEFAUL_PAGE = 'index';
   const DEFAULT_BREAKPOINTS = [320, 768, 1240];
   const DEFAULT_FOLDER = 'pixelperfect';
@@ -27,7 +27,7 @@ export default () => {
         folder = DEFAULT_FOLDER,
         ext = DEFAULT_EXT,
         selector = 'body'
-      } = window.pinegladePP || {};
+      } = window.pixelperfect || {};
 
       this._isPP = Boolean(Number(localStorage.getItem('pp') || 0));
       this._isInvert = Boolean(Number(localStorage.getItem('ppInvert') || 1));
@@ -147,7 +147,7 @@ export default () => {
     }
   }
 
-  document.head.insertAdjacentHTML('beforeend', `<style>.pineglade-pp{position:relative;overflow-x:hidden;overflow-y:auto}.pineglade-pp::after{content:"";position:absolute;top:0;right:0;bottom:0;left:0;z-index:1000000;background-image:var(--pp-img);background-repeat:no-repeat;background-position:calc(50% + var(--pp-offset-x)) var(--pp-offset-y);opacity:.5;filter:var(--pp-filter);pointer-events:none}</style>`);
+  document.head.insertAdjacentHTML('beforeend', `<style>.pixelperfect{position:relative;overflow-x:hidden;overflow-y:auto}.pixelperfect::after{content:"";position:absolute;top:0;right:0;bottom:0;left:0;z-index:1000000;background-image:var(--pp-img);background-repeat:no-repeat;background-position:calc(50% + var(--pp-offset-x)) var(--pp-offset-y);opacity:.5;filter:var(--pp-filter);pointer-events:none}</style>`);
 
   new Pixelperfect();
 }

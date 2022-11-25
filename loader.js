@@ -1,3 +1,3 @@
-import pinegladePP from './index.js';
+import loadPixelperfect from './index.js';
 
-pinegladePP();
+loadPixelperfect();

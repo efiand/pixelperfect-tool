@@ -26,6 +26,6 @@ export default {
     ]
   },
   output: {
-    filename: 'pineglade-pp.min.js'
+    filename: 'pixelperfect.min.js'
   }
 };

@@ -1,6 +1,6 @@
 {
-  "name": "pineglade-pp",
-  "version": "1.1.4",
+  "name": "@efiand/pixelperfect",
+  "version": "1.2.1",
   "description": "Pixel perfect tool for development mode",
   "main": "index.js",
   "type": "module",
@@ -11,15 +11,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/efiand/pineglade-pp.git"
+    "url": "git+https://github.com/efiand/pixelperfect.git"
   },
   "keywords": [],
   "author": "efiand",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/efiand/pineglade-pp/issues"
+    "url": "https://github.com/efiand/pixelperfect/issues"
   },
-  "homepage": "https://efiand.github.io/pineglade-pp",
+  "homepage": "https://efiand.github.io/pixelperfect",
   "dependencies": {
     "copy-webpack-plugin": "10.2.4",
     "terser-webpack-plugin": "5.3.1",

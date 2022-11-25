@@ -1,7 +1,12 @@
-# pineglade-pp changelog
+# pixelperfect changelog
 
 Undescribed versions are deprecated.
 
+
+## 1.2.1
+* Package's name is `@efiand/pixelperfect` now.
+* Default class `.pineglade-pp` renamed to `.pixelperfect`.
+* `window.pinegladePP` settings object renamed to `window.pixelperfect`.
 
 ## 1.1.4
 * Change the implementation of offsets to from `transform` to `background-position`. This will avoid scrollbars when associating a layer with an arbitrary selector inside the `body`.
@@ -9,7 +14,7 @@ Undescribed versions are deprecated.
 
 ## 1.1.2
 
-* Add custom selector for `.pineglade-pp` element (`window.pinegladePP.selector`). Default value is `body` (for compatibility with previous versions).
+* Add custom selector for `.pixelperfect` element (`window.pinegladePP.selector`). Default value is `body` (for compatibility with previous versions).
 * Change default desktop breakpoint from 1260 to 1240.
 * Add this changelog.
 
