@@ -1,4 +1,4 @@
-# pineglade-pp [![npm version](https://img.shields.io/npm/v/pineglade-pp.svg)](https://www.npmjs.com/package/pineglade-pp)
+# @efiand/pixelperfect [![npm version](https://img.shields.io/npm/v/@efiand/pixelperfect.svg)](https://www.npmjs.com/package/@efiand/pixelperfect)
 
 Модуль для накладывания скриншотов макетов поверх верстаемых страниц.
 Позволяет:
@@ -6,7 +6,7 @@
 * смещать скриншоты, переключать режим инверсии,
 * сохранять состояние между перезагрузками страницы и сеансами перезапуска сборки.
 
-[История версий.](https://github.com/efiand/pineglade-pp/blob/main/CHANGELOG.md#pineglade-pp-changelog)
+[История версий.](https://github.com/efiand/pixelperfect/blob/main/CHANGELOG.md#pixelperfect-changelog)
 
 
 ## Горячие клавиши
@@ -29,43 +29,43 @@
 
 ```html
 <script>
-  window.pinegladePP = {
+  window.pixelperfect = {
     breakpoints: [320, 768, 1260, 1380, 1600],
     folder: 'img/pixelperfect'
   };
 </script>
-<script src="https://efiand.github.io/pineglade-pp/pineglade-pp.min.js"></script>
+<script src="https://efiand.github.io/pixelperfect/pixelperfect.min.js"></script>
 ```
 
 
 ### Использование модуля
 
-* `npm i -DE pineglade-pp`
+* `npm i -DE @efiand/pixelperfect`
 
 * Добавление кода как есть в систему сборки
 
 ```js
-export * from 'pineglade-pp/loader.js';
+export * from '@efiand/pixelperfect/loader.js';
 ```
 Опции необходимо добавить вне бандла, как в примере выше.
 
 * Добавление модуля в систему сборки (позволяет сконфигурировать опции внутри бандла):
 
 ```js
-import loadPP from 'pineglade-pp';
+import loadPixelperfect from '@efiand/pixelperfect';
 
-window.pinegladePP = {
+window.pixelperfect = {
   breakpoints: [320, 768, 1260, 1380, 1600],
   folder: 'img/pixelperfect'
 };
 
-loadPP();
+loadPixelperfect();
 ```
 
 
 ## Настройки
 
-Передаются через объект `window.pinegladePP`. Все настройки опциональны, и если дефолтные подходят, то необходимости создавать объект нет.
+Передаются через объект `window.pixelperfect`. Все настройки опциональны, и если дефолтные подходят, то необходимости создавать объект нет.
 
 * `page` – по умолчанию это URL загруженной страницы от корня (не включая корневой слэш и концевой `.html`, если он там есть). Например, для страницы `/about.html` значение будет `'about'`. Для главной страницы (`/`) – значение по умолчанию `'index'`.
 * `breakpoints` – числовой массив ширин макетов (порядок произвольный). При первичной загрузке с определенной шириной окна или при ресайзе происходит смена картинки на подходящую для текущей ширины. Значение по умолчанию – `[320, 768, 1240]`. Если текущая ширина экрана меньше минимального брейкпоинта, фоновое изображение отключается.
