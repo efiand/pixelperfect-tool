@@ -1,4 +1,4 @@
-# @efiand/pixelperfect [![npm version](https://img.shields.io/npm/v/@efiand/pixelperfect.svg)](https://www.npmjs.com/package/@efiand/pixelperfect)
+# pixelperfect-tool [![npm version](https://img.shields.io/npm/v/pixelperfect-tool.svg)](https://www.npmjs.com/package/pixelperfect-tool)
 
 Модуль для накладывания скриншотов макетов поверх верстаемых страниц.
 Позволяет:
@@ -34,25 +34,25 @@
     folder: 'img/pixelperfect'
   };
 </script>
-<script src="https://efiand.github.io/pixelperfect/pixelperfect.min.js"></script>
+<script src="https://efiand.github.io/pixelperfect-tool/pixelperfect.min.js"></script>
 ```
 
 
 ### Использование модуля
 
-* `npm i -DE @efiand/pixelperfect`
+* `npm i -DE pixelperfect-tool`
 
 * Добавление кода как есть в систему сборки
 
 ```js
-export * from '@efiand/pixelperfect/loader.js';
+export * from 'pixelperfect-tool/loader.js';
 ```
 Опции необходимо добавить вне бандла, как в примере выше.
 
 * Добавление модуля в систему сборки (позволяет сконфигурировать опции внутри бандла):
 
 ```js
-import loadPixelperfect from '@efiand/pixelperfect';
+import loadPixelperfect from 'pixelperfect-tool';
 
 window.pixelperfect = {
   breakpoints: [320, 768, 1260, 1380, 1600],
