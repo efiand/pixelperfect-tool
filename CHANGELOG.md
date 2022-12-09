@@ -3,6 +3,9 @@
 Undescribed versions are deprecated.
 
 
+## 1.3.1
+* Package's name is `pixelperfect-tool` now.
+
 ## 1.2.1
 * Package's name is `@efiand/pixelperfect` now.
 * Default class `.pineglade-pp` renamed to `.pixelperfect`.

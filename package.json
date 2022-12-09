@@ -1,6 +1,6 @@
 {
-  "name": "@efiand/pixelperfect",
-  "version": "1.2.1",
+  "name": "pixelperfect-tool",
+  "version": "1.3.1",
   "description": "Pixel perfect tool for development mode",
   "main": "index.js",
   "type": "module",
@@ -11,15 +11,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/efiand/pixelperfect.git"
+    "url": "git+https://github.com/efiand/pixelperfect-tool.git"
   },
   "keywords": [],
   "author": "efiand",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/efiand/pixelperfect/issues"
+    "url": "https://github.com/efiand/pixelperfect-tool/issues"
   },
-  "homepage": "https://efiand.github.io/pixelperfect",
+  "homepage": "https://efiand.github.io/pixelperfect-tool",
   "dependencies": {
     "copy-webpack-plugin": "10.2.4",
     "terser-webpack-plugin": "5.3.1",
