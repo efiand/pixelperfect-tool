@@ -3,7 +3,7 @@ export default () => {
     return;
   }
 
-  const PP_CLASS = 'pixelperfect'
+  const PP_CLASS = 'pixelperfect';
   const DEFAUL_PAGE = 'index';
   const DEFAULT_BREAKPOINTS = [320, 768, 1240];
   const DEFAULT_FOLDER = 'pixelperfect';
@@ -12,8 +12,8 @@ export default () => {
     ArrowUp: [0, -1],
     ArrowDown: [0, 1],
     ArrowLeft: [-1, 0],
-    ArrowRight: [1, 0],
-  }
+    ArrowRight: [1, 0]
+  };
 
   const sortBP = (a, b) => a - b;
 
@@ -48,11 +48,13 @@ export default () => {
       this._offsets = JSON.parse(localStorage.getItem('ppOffsets')) || {};
       if (!this._offsets[this._page]) {
         this._offsets[this._page] = {};
-        for (const breakpoint of this._breakpoints) {
+      }
+      for (const breakpoint of this._breakpoints) {
+        if (!this._offsets[this._page][breakpoint]) {
           this._offsets[this._page][breakpoint] = [0, 0];
         }
-        this._saveOffsets();
       }
+      this._saveOffsets();
 
       this._keydownHandler = this._keydownHandler.bind(this);
       this._changeScreenMode = this._changeScreenMode.bind(this);
@@ -115,7 +117,21 @@ export default () => {
     }
 
     _managePP() {
+      if (getComputedStyle(this._PPElement).position === 'fixed') {
+        this._scrollableElement = document.documentElement;
+        this._scrollTop = this._PPElement.scrollTop;
+      } else {
+        this._scrollableElement = this._PPElement;
+        this._scrollTop = document.documentElement.scrollTop;
+      }
+      const scrollBehavior = getComputedStyle(this._PPElement).scrollBehavior;
+
       this._PPElement.classList.toggle(PP_CLASS, this._isPP);
+
+      this._PPElement.style.scrollBehavior = 'auto';
+      this._scrollableElement.scroll(0, this._scrollTop);
+      this._PPElement.style.scrollBehavior = scrollBehavior;
+
       localStorage.setItem('pp', Number(this._isPP));
     }
 
@@ -147,7 +163,10 @@ export default () => {
     }
   }
 
-  document.head.insertAdjacentHTML('beforeend', `<style>.pixelperfect{position:relative;overflow-x:hidden;overflow-y:auto}.pixelperfect::after{content:"";position:absolute;top:0;right:0;bottom:0;left:0;z-index:1000000;background-image:var(--pp-img);background-repeat:no-repeat;background-position:calc(50% + var(--pp-offset-x)) var(--pp-offset-y);opacity:.5;filter:var(--pp-filter);pointer-events:none}</style>`);
+  document.head.insertAdjacentHTML(
+    'beforeend',
+    `<style>.pixelperfect{position:relative;overflow-x:hidden;overflow-y:auto}.pixelperfect::after{content:"";position:absolute;top:0;right:0;bottom:0;left:0;z-index:1000000;background-image:var(--pp-img);background-repeat:no-repeat;background-position:calc(50% + var(--pp-offset-x)) var(--pp-offset-y);opacity:.5;filter:var(--pp-filter);pointer-events:none}</style>`
+  );
 
   new Pixelperfect();
-}
+};

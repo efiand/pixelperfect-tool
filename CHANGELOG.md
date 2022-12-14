@@ -3,6 +3,12 @@
 Undescribed versions are deprecated.
 
 
+## 1.4.0
+
+* Bugfix: `Uncaught TypeError: this._offsets[this._page][this._currentBreakpoint] is undefined`.
+* Bugfix: save scroll position if DOM element had fixed position on start.
+
+
 ## 1.3.1
 * Package's name is `pixelperfect-tool` now.
 
