@@ -2,13 +2,17 @@
 
 Undescribed versions are deprecated.
 
+## 1.6.0
+
+- `index.d.ts` added.
+
 ## 1.5.0
 
-- Support options as the arguments of `loadPixelperfect`.
+- The options as the arguments of `loadPixelperfect` are supported.
 
 ## 1.4.2
 
-- Update dependency versions to eliminate vulnerabilities.
+- Updating dependency versions to eliminate vulnerabilities.
 
 ## 1.4.0
 
