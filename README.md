@@ -37,26 +37,55 @@
 
 ### Использование модуля
 
-- `npm i -DE pixelperfect-tool`
+Установка: `npm i -DE pixelperfect-tool`.
 
 - Добавление кода как есть в систему сборки
 
-```js
-export * from 'pixelperfect-tool/loader.js';
-```
+  ```js
+  export * from 'pixelperfect-tool/loader.js';
+  ```
 
-Опции необходимо добавить вне бандла, как в примере выше.
+  Опции необходимо добавить вне бандла, как в примере выше.
 
 - Добавление модуля в систему сборки (позволяет сконфигурировать опции внутри бандла):
 
-```js
-import loadPixelperfect from 'pixelperfect-tool';
+  ```js
+  import loadPixelperfect from 'pixelperfect-tool';
 
-loadPixelperfect({
-  breakpoints: [320, 768, 1260, 1380, 1600],
-  folder: 'img/pixelperfect'
-});
-```
+  loadPixelperfect({
+    breakpoints: [320, 768, 1260, 1380, 1600],
+    folder: 'img/pixelperfect'
+  });
+  ```
+
+- Nuxt-компонент.
+
+  Подключение модуля в `nuxt.config.ts`:
+
+  ```js
+  export default defineNuxtConfig({
+    modules: ['pixelperfect-tool/nuxt']
+  });
+  ```
+
+  Использование в приложении:
+
+  ```html
+  <template>
+    <dev-only>
+      <pixelperfect-tool :options="pixelperfectOptions" />
+    </dev-only>
+  </template>
+
+  <script lang="ts" setup>
+    import type { PixelperfectOptions } from 'pixelperfect-tool';
+
+    const pixelperfectOptions: PixelperfectOptions = {
+      breakpoints: [320, 768, 1260, 1380, 1600],
+      folder: 'img/pixelperfect'
+    };
+  </script>
+  ```
 
 ## Настройки
 
