@@ -2,6 +2,10 @@
 
 Undescribed versions are deprecated.
 
+## 1.5.0
+
+- Support options as the arguments of `loadPixelperfect`.
+
 ## 1.4.2
 
 - Update dependency versions to eliminate vulnerabilities.

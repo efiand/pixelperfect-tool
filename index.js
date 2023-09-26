@@ -1,4 +1,4 @@
-export default () => {
+export default (options = {}) => {
   if (!window) {
     return;
   }
@@ -27,7 +27,7 @@ export default () => {
         folder = DEFAULT_FOLDER,
         ext = DEFAULT_EXT,
         selector = 'body'
-      } = window.pixelperfect || {};
+      } = window.pixelperfect || options;
 
       this._isPP = Boolean(Number(localStorage.getItem('pp') || 0));
       this._isInvert = Boolean(Number(localStorage.getItem('ppInvert') || 1));
