@@ -1,4 +1,4 @@
-interface PixelperfectOptions {
+export interface PixelperfectOptions {
   breakpoints?: number[] | null;
   ext?: string;
   folder?: string;

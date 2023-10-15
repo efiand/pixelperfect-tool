@@ -2,6 +2,10 @@
 
 Undescribed versions are deprecated.
 
+## 1.7.1
+
+- Nuxt component `PixelperfectTool` added.
+
 ## 1.6.0
 
 - `index.d.ts` added.
@@ -19,23 +23,13 @@ Undescribed versions are deprecated.
 - Bugfix: `Uncaught TypeError: this._offsets[this._page][this._currentBreakpoint] is undefined`.
 - Bugfix: save scroll position if DOM element had fixed position on start.
 
-## 1.3.1
-
-- Package's name is `pixelperfect-tool` now.
-
-## 1.2.1
-
-- Package's name is `@efiand/pixelperfect` now.
-- Default class `.pineglade-pp` renamed to `.pixelperfect`.
-- `window.pinegladePP` settings object renamed to `window.pixelperfect`.
-
 ## 1.1.4
 
 - Change the implementation of offsets to from `transform` to `background-position`. This will avoid scrollbars when associating a layer with an arbitrary selector inside the `body`.
 
 ## 1.1.2
 
-- Add custom selector for `.pixelperfect` element (`window.pinegladePP.selector`). Default value is `body` (for compatibility with previous versions).
+- Add custom selector for `.pixelperfect` element (`window.pixelperfect.selector`). Default value is `body` (for compatibility with previous versions).
 - Change default desktop breakpoint from 1260 to 1240.
 - Add this changelog.
 
