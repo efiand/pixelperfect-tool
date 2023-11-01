@@ -18,12 +18,7 @@
 - `R` – при включенном модуле очищает localStorage от данных по смещениям изображений и перезагружает страницу.
 - `ArrowUp`, `ArrowDown`, `ArrowLeft`, `ArrowRight` – смещают положение изображения. Настройки сохраняются для каждой страницы и каждого брейкпоинта на ней.
 
-## Установка
-
-Рекомендуется подключать скрипт внутрь тега `<body>`.
-Отсутствие в production-режиме изображений PP и кода подключения скрипта – настраивается разработчиком отдельно исходя из возможностей его сборки.
-
-### Прямое подключение скрипта
+## Прямое подключение скрипта
 
 ```html
 <script>
@@ -32,60 +27,86 @@
     folder: 'img/pixelperfect'
   };
 </script>
-<script src="https://efiand.github.io/pixelperfect-tool/pixelperfect.min.js"></script>
+<script src="https://efiand.github.io/pixelperfect-tool/pixelperfect.min.js" defer></script>
 ```
 
-### Использование модуля
+Отсутствие в production-режиме изображений PP и кода подключения скрипта – настраивается разработчиком отдельно исходя из возможностей его сборки.
+
+## Подключение модуля
 
 Установка: `npm i -DE pixelperfect-tool`.
 
-- Добавление кода как есть в систему сборки
+Модуль инициализирует библиотеку только один раз независимо от количества вызовов.
 
-  ```js
-  export * from 'pixelperfect-tool/loader.js';
-  ```
+### Добавление в систему сборки как есть
 
-  Опции необходимо добавить вне бандла, как в примере выше.
+```js
+window.pixelperfect = {
+  breakpoints: [320, 768, 1260, 1380, 1600],
+  folder: 'img/pixelperfect'
+};
 
-- Добавление модуля в систему сборки (позволяет сконфигурировать опции внутри бандла):
+export * from 'pixelperfect-tool/loader.js';
+```
 
-  ```js
-  import loadPixelperfect from 'pixelperfect-tool';
+### Использование лоадера
 
-  loadPixelperfect({
+```js
+import loadPixelperfect from 'pixelperfect-tool';
+
+loadPixelperfect({
+  breakpoints: [320, 768, 1260, 1380, 1600],
+  folder: 'img/pixelperfect'
+});
+```
+
+### Vue-компонент
+
+Renderless-компонент с возможностью добавления опций.
+
+```html
+<template>
+  <pixelperfect-tool :options="pixelperfectOptions" />
+</template>
+
+<script lang="ts" setup>
+  import type { PixelperfectOptions } from 'pixelperfect-tool';
+  import PixelperfectTool from 'pixelperfect-tool/vue';
+
+  const pixelperfectOptions: PixelperfectOptions = {
     breakpoints: [320, 768, 1260, 1380, 1600],
     folder: 'img/pixelperfect'
-  });
-  ```
+  };
+</script>
+```
 
-- Nuxt-компонент.
+### Nuxt-модуль
 
-  Подключение модуля в `nuxt.config.ts`:
+Предоставляет вышеупомянутый vue-компонент `PixelperfectTool`, инициализирующий библиотеку на клиентской стороне только в dev-режиме.
 
-  ```js
-  export default defineNuxtConfig({
-    modules: ['pixelperfect-tool/nuxt']
-  });
-  ```
+Подключение модуля в `nuxt.config.ts`:
 
-  Использование в приложении:
+```js
+export default defineNuxtConfig({
+  modules: ['pixelperfect-tool/nuxt'],
 
-  ```html
-  <template>
-    <dev-only>
-      <pixelperfect-tool :options="pixelperfectOptions" />
-    </dev-only>
-  </template>
+  // Кастомный путь к изображениям, чтобы они не попадали в билд
+  nitro: {
+    ...(process.env.NODE_ENV === 'development'
+      ? {
+          publicAssets: [
+            {
+              baseURL: 'pixelperfect', // доступен в браузере как /pixelperfect
+              dir: 'dev/pixelperfect' // путь относительно @/server/
+            }
+          ]
+        }
+      : {})
+  }
+});
+```
 
-  <script lang="ts" setup>
-    import type { PixelperfectOptions } from 'pixelperfect-tool';
-
-    const pixelperfectOptions: PixelperfectOptions = {
-      breakpoints: [320, 768, 1260, 1380, 1600],
-      folder: 'img/pixelperfect'
-    };
-  </script>
-  ```
+Использование в приложении отличается только отсутствием необходимости импортировать компонент.
 
 ## Настройки
 

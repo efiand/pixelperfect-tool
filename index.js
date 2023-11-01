@@ -1,5 +1,5 @@
 export default (options = {}) => {
-  if (!window) {
+  if (!window || window.isPPLoaded) {
     return;
   }
 
@@ -169,4 +169,6 @@ export default (options = {}) => {
   );
 
   new Pixelperfect();
+
+  window.isPPLoaded = true;
 };

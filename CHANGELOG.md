@@ -2,6 +2,12 @@
 
 Undescribed versions are deprecated.
 
+## 1.8.0
+
+- Vue-component is available separately from the nuxt-module.
+- Reinitialization prevented.
+- Removed сomponent resolve warning.
+
 ## 1.7.1
 
 - Nuxt component `PixelperfectTool` added.

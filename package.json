@@ -1,6 +1,6 @@
 {
   "name": "pixelperfect-tool",
-  "version": "1.7.1",
+  "version": "1.8.0",
   "description": "Pixel perfect tool for development mode",
   "main": "index.js",
   "type": "module",

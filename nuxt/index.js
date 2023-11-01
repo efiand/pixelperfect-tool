@@ -1,13 +1,8 @@
-import { defineNuxtModule, createResolver } from '@nuxt/kit';
-import { fileURLToPath } from 'node:url';
+import { defineNuxtModule, createResolver, addComponent } from '@nuxt/kit';
 
 export default defineNuxtModule({
-  hooks: {
-    'components:dirs': (dirs) => {
-      const { resolve } = createResolver(import.meta.url);
-      dirs.push({
-        path: fileURLToPath(`file://${resolve('./')}`)
-      });
-    }
+  async setup() {
+    const { resolve } = createResolver(import.meta.url);
+    await addComponent({ name: 'PixelperfectTool', filePath: resolve('../vue/index.js'), global: true });
   }
 });
