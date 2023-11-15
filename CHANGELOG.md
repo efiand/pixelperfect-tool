@@ -2,6 +2,10 @@
 
 Undescribed versions are deprecated.
 
+## 1.8.1
+
+- Remove ended slash from page name.
+
 ## 1.8.0
 
 - Vue-component is available separately from the nuxt-module.

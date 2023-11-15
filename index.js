@@ -40,7 +40,7 @@ export default (options = {}) => {
 
       if (!page) {
         const [, currentPage = null] = window.location.pathname.match(/^\/?(.*?)(\.html?)?$/) || [];
-        this._page = currentPage || DEFAUL_PAGE;
+        this._page = currentPage.replace(/\/$/, '') || DEFAUL_PAGE;
       } else {
         this._page = page;
       }
