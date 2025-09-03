@@ -1,0 +1,17 @@
+{
+	"editor.defaultFormatter": "biomejs.biome",
+	"editor.formatOnPaste": true,
+	"editor.formatOnSave": true,
+	"editor.codeActionsOnSave": {
+		"source.fixAll.biome": "explicit",
+		"source.organizeImports.biome": "explicit",
+		"source.suppressRule.inline.biome": "never",
+		"source.suppressRule.topLevel.biome": "never"
+	},
+	"emmet.includeLanguages": {
+		"javascript": "html"
+	},
+	"emmet.preferences": {
+		"output.reverseAttributes": true
+	}
+}

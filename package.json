@@ -1,29 +1,43 @@
 {
-  "name": "pixelperfect-tool",
-  "version": "1.8.1",
-  "description": "Pixel perfect tool for development mode",
-  "main": "index.js",
-  "type": "module",
-  "scripts": {
-    "build": "webpack",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "postinstall": "npm run build"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/efiand/pixelperfect-tool.git"
-  },
-  "keywords": [],
-  "author": "efiand",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/efiand/pixelperfect-tool/issues"
-  },
-  "homepage": "https://efiand.github.io/pixelperfect-tool",
-  "dependencies": {
-    "copy-webpack-plugin": "11.0.0",
-    "terser-webpack-plugin": "5.3.9",
-    "webpack": "5.88.2",
-    "webpack-cli": "5.1.4"
-  }
+	"author": "efiand",
+	"browserslist": [
+		"> 0.2%",
+		"last 6 version"
+	],
+	"bugs": {
+		"url": "https://github.com/efiand/pixelperfect-tool/issues"
+	},
+	"description": "Pixel perfect tool for development mode",
+	"devDependencies": {
+		"@biomejs/biome": "2.2.2",
+		"@fastify/pre-commit": "2.2.0",
+		"@types/node": "24.3.0",
+		"rolldown": "1.0.0-beta.34",
+		"typescript": "5.9.2"
+	},
+	"homepage": "https://efiand.github.io/pixelperfect-tool",
+	"keywords": [
+		"pixelperfect",
+		"pixel-perfect",
+		"pixel perfect"
+	],
+	"main": "index.js",
+	"name": "pixelperfect-tool",
+	"pre-commit": [
+		"lint-format"
+	],
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/efiand/pixelperfect-tool.git"
+	},
+	"scripts": {
+		"build": "rolldown -c && node ./post-build.js",
+		"lint": "npm run type-check && biome check",
+		"lint-format": "npm run type-check && biome check --write",
+		"type-check": "tsc -p ./tsconfig.json",
+		"upgrade": "node ./tools/upgrade.js"
+	},
+	"type": "module",
+	"types": "index.d.ts",
+	"version": "1.9.4"
 }

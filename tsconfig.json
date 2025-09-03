@@ -1,0 +1,17 @@
+{
+	"compilerOptions": {
+		"allowJs": true,
+		"baseUrl": "./",
+		"checkJs": true,
+		"lib": ["DOM", "ES2022"],
+		"module": "nodenext",
+		"moduleResolution": "nodenext",
+		"noEmit": true,
+		"noImplicitAny": true,
+		"skipLibCheck": true,
+		"resolveJsonModule": true,
+		"strict": true,
+		"target": "es2022"
+	},
+	"exclude": ["dist"]
+}

@@ -1,0 +1,8 @@
+!*.json
+package.json
+*.md
+.*
+dist
+node_modules
+tools
+post-build.js

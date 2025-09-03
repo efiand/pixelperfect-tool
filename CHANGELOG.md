@@ -2,6 +2,13 @@
 
 Undescribed versions are deprecated.
 
+## 1.9.4
+
+- Fix: no clipping if _PPElement height is 100%.
+- Rolldown for IIFE creating.
+- Integration with biomejs.
+- Type-check (using JSDoc for `@type`).
+
 ## 1.8.1
 
 - Remove ended slash from page name.

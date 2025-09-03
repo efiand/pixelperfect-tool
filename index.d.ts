@@ -1,9 +1,18 @@
-export interface PixelperfectOptions {
-  breakpoints?: number[] | null;
-  ext?: string;
-  folder?: string;
-  page?: string | null;
-  selector?: string;
+declare global {
+	interface Window {
+		isPPLoaded?: boolean;
+		pixelperfect?: PixelperfectOptions;
+	}
+
+	type _PixelperfectOptions = PixelperfectOptions;
 }
 
-export default function (options: PixelperfectOptions): void;
+export interface PixelperfectOptions {
+	breakpoints?: null | number[];
+	ext?: string;
+	folder?: string;
+	page?: null | string;
+	selector?: string;
+}
+
+export default function (options?: PixelperfectOptions): void;

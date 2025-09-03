@@ -1,20 +1,23 @@
-import loadPixelperfect from '../index.js';
-import { defineComponent, onMounted } from 'vue';
+// @ts-nocheck
+
+import { defineComponent, onMounted } from "vue";
+
+import loadPixelperfect from "../index.js";
 
 export default defineComponent({
-  name: 'PixelperfectTool',
-  props: {
-    options: {
-      type: Object,
-      default: () => ({})
-    }
-  },
-  setup(props, { slots }) {
-    if (import.meta.dev) {
-      onMounted(() => {
-        loadPixelperfect(props.options);
-      });
-    }
-    return () => slots.default?.();
-  }
+	name: "PixelperfectTool",
+	props: {
+		options: {
+			default: () => ({}),
+			type: Object,
+		},
+	},
+	setup(props, { slots }) {
+		if (import.meta.dev) {
+			onMounted(() => {
+				loadPixelperfect(props.options);
+			});
+		}
+		return () => slots.default?.();
+	},
 });
