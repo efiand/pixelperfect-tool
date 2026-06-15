@@ -1,11 +1,9 @@
-// @ts-nocheck
+import { defineComponent, onMounted } from 'vue';
 
-import { defineComponent, onMounted } from "vue";
-
-import loadPixelperfect from "../index.js";
+import { loadPixelperfect } from '../index.js';
 
 export default defineComponent({
-	name: "PixelperfectTool",
+	name: 'PixelperfectTool',
 	props: {
 		options: {
 			default: () => ({}),

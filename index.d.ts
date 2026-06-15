@@ -1,18 +1,6 @@
-declare global {
-	interface Window {
-		isPPLoaded?: boolean;
-		pixelperfect?: PixelperfectOptions;
-	}
+/// <reference path="./types/index.d.ts" />
 
-	type _PixelperfectOptions = PixelperfectOptions;
-}
+declare function loadPixelperfect(options?: PixelperfectOptions): void;
 
-export interface PixelperfectOptions {
-	breakpoints?: null | number[];
-	ext?: string;
-	folder?: string;
-	page?: null | string;
-	selector?: string;
-}
-
-export default function (options?: PixelperfectOptions): void;
+export type { PixelperfectOptions } from './types/pixelperfect.js';
+export { loadPixelperfect };

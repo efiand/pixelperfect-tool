@@ -1,58 +1,117 @@
 {
-	"$schema": "https://biomejs.dev/schemas/2.2.2/schema.json",
-	"vcs": {
-		"enabled": true,
-		"clientKind": "git",
-		"useIgnoreFile": true
+	"$schema": "https://biomejs.dev/schemas/2.5.0/schema.json",
+	"assist": {
+		"actions": {
+			"source": {
+				"organizeImports": {
+					"level": "on",
+					"options": {
+						"identifierOrder": "lexicographic"
+					}
+				},
+				"useSortedKeys": "on"
+			}
+		},
+		"enabled": true
 	},
 	"files": {
-		"ignoreUnknown": true
+		"ignoreUnknown": true,
+		"includes": ["**", "!node_modules", "!dist", "!tmp"]
 	},
 	"formatter": {
 		"enabled": true,
 		"indentStyle": "tab",
 		"lineWidth": 120
 	},
+	"javascript": {
+		"formatter": {
+			"quoteStyle": "single"
+		}
+	},
 	"linter": {
-		"domains": {
-			"project": "all"
-		},
+		"domains": { "project": "all" },
 		"enabled": true,
 		"rules": {
-			"recommended": true,
 			"complexity": {
-				"noUselessStringConcat": "error"
+				"noUselessStringConcat": "error",
+				"useArrowFunction": "off"
 			},
 			"correctness": {
-				"noUndeclaredDependencies": "off",
-				"noUnusedVariables": "error",
+				"noUnusedFunctionParameters": "error",
 				"noUnusedImports": "error",
-				"noUnusedFunctionParameters": "error"
+				"noUnusedVariables": "error"
 			},
-			"performance": {
-				"noAccumulatingSpread": "error"
-			},
+			"performance": { "noAccumulatingSpread": "error" },
+			"preset": "recommended",
 			"style": {
-				"useConst": { "fix": "none", "level": "error", "options": {} }
+				"noDefaultExport": "error",
+				"useBlockStatements": "error",
+				"useConst": {
+					"fix": "none",
+					"level": "error",
+					"options": {}
+				},
+				"useDestructuring": "error",
+				"useExponentiationOperator": "error",
+				"useExportsLast": "error",
+				"useFilenamingConvention": {
+					"level": "error",
+					"options": {
+						"filenameCases": ["kebab-case"],
+						"strictCase": false
+					}
+				},
+				"useImportType": "error",
+				"useNodejsImportProtocol": "error",
+				"useTemplate": "error"
 			},
 			"suspicious": {
 				"noConsole": {
 					"fix": "none",
 					"level": "error",
-					"options": {
-						"allow": ["assert", "error", "info", "warn"]
-					}
+					"options": { "allow": ["assert", "error", "info", "warn"] }
 				},
-				"noGlobalIsNan": "error"
+				"noGlobalIsNan": "error",
+				"noVar": "error"
 			}
 		}
 	},
-	"assist": {
-		"enabled": true,
-		"actions": {
-			"source": {
-				"organizeImports": "on"
+	"overrides": [
+		{
+			"includes": ["rolldown.config.js", "nuxt/**", "vue/**", "test/**/*.spec.js"],
+			"linter": {
+				"rules": {
+					"correctness": {
+						"noUndeclaredDependencies": "off",
+						"noUnresolvedImports": "off"
+					},
+					"style": {
+						"noDefaultExport": "off",
+						"useExportsLast": "off"
+					}
+				}
+			}
+		},
+		{
+			"includes": ["types/**/*.d.ts"],
+			"linter": {
+				"rules": {
+					"correctness": {
+						"noUndeclaredDependencies": "off",
+						"noUnresolvedImports": "off",
+						"noUnusedVariables": "off"
+					},
+					"style": {
+						"noDefaultExport": "off",
+						"useExportsLast": "off"
+					}
+				}
 			}
 		}
+	],
+	"vcs": {
+		"clientKind": "git",
+		"enabled": true,
+		"useIgnoreFile": true
 	}
 }

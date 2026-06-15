@@ -9,11 +9,24 @@
 	},
 	"description": "Pixel perfect tool for development mode",
 	"devDependencies": {
-		"@biomejs/biome": "2.2.2",
-		"@fastify/pre-commit": "2.2.0",
-		"@types/node": "24.3.0",
-		"rolldown": "1.0.0-beta.34",
-		"typescript": "5.9.2"
+		"@biomejs/biome": "2.5.0",
+		"@fastify/pre-commit": "2.2.1",
+		"@nuxt/kit": "4.4.8",
+		"@types/node": "25.9.3",
+		"@vue/test-utils": "2.4.11",
+		"happy-dom": "20.10.3",
+		"rolldown": "1.1.1",
+		"typescript": "6.0.3",
+		"vue": "3.5.38"
+	},
+	"exports": {
+		".": {
+			"default": "./index.js",
+			"types": "./index.d.ts"
+		},
+		"./loader.js": "./loader.js",
+		"./nuxt": "./nuxt/index.js",
+		"./vue": "./vue/index.js"
 	},
 	"homepage": "https://efiand.github.io/pixelperfect-tool",
 	"keywords": [
@@ -21,23 +34,27 @@
 		"pixel-perfect",
 		"pixel perfect"
 	],
-	"main": "index.js",
 	"name": "pixelperfect-tool",
 	"pre-commit": [
-		"lint-format"
+		"lint-format",
+		"test"
 	],
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/efiand/pixelperfect-tool.git"
 	},
 	"scripts": {
-		"build": "rolldown -c && node ./post-build.js",
-		"lint": "npm run type-check && biome check",
-		"lint-format": "npm run type-check && biome check --write",
+		"build": "rolldown -c && node ./tools/post-build.js",
+		"lint": "npm run lint-static-check && biome check",
+		"lint-format": "npm run lint-static-check && biome check --write",
+		"lint-static-check": "npm run type-check && node ./tools/check-function-order.js",
+		"postinstall": "node ./tools/postinstall.js",
+		"prepublishOnly": "npm run verify",
+		"test": "node --disable-warning=ExperimentalWarning --experimental-test-module-mocks --test --test-isolation=process \"test/**/*.spec.js\"",
 		"type-check": "tsc -p ./tsconfig.json",
-		"upgrade": "node ./tools/upgrade.js"
+		"upgrade": "node ./tools/upgrade.js",
+		"verify": "npm run lint && npm test && npm run build"
 	},
 	"type": "module",
-	"types": "index.d.ts",
-	"version": "1.9.4"
+	"version": "2.0.0"
 }

@@ -1,3 +1,9 @@
 {
-	"recommendations": ["enhancedjs.html-in-template-string", "oouo-diogo-perdigao.docthis", "editorconfig.editorconfig"]
+	"recommendations": [
+		"biomejs.biome",
+		"editorconfig.editorconfig",
+		"oouo-diogo-perdigao.docthis",
+		"redhat.vscode-yaml",
+		"tobermory.es6-string-html"
+	]
 }

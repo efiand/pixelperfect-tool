@@ -1,10 +1,10 @@
-import { defineConfig } from "rolldown";
+import { defineConfig } from 'rolldown';
 
 export default defineConfig({
-	input: "loader.js",
+	input: 'loader.js',
 	output: {
-		file: "dist/pixelperfect.min.js",
-		format: "iife",
+		file: 'dist/pixelperfect.min.js',
+		format: 'iife',
 		minify: true,
 	},
 });
