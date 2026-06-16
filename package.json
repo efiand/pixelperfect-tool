@@ -14,7 +14,7 @@
 		"@nuxt/kit": "4.4.8",
 		"@types/node": "25.9.3",
 		"@vue/test-utils": "2.4.11",
-		"happy-dom": "20.10.3",
+		"happy-dom": "20.10.4",
 		"rolldown": "1.1.1",
 		"typescript": "6.0.3",
 		"vue": "3.5.38"
@@ -48,7 +48,6 @@
 		"lint": "npm run lint-static-check && biome check",
 		"lint-format": "npm run lint-static-check && biome check --write",
 		"lint-static-check": "npm run type-check && node ./tools/check-function-order.js",
-		"postinstall": "node ./tools/postinstall.js",
 		"prepublishOnly": "npm run verify",
 		"test": "node --disable-warning=ExperimentalWarning --experimental-test-module-mocks --test --test-isolation=process \"test/**/*.spec.js\"",
 		"type-check": "tsc -p ./tsconfig.json",
@@ -56,5 +55,5 @@
 		"verify": "npm run lint && npm test && npm run build"
 	},
 	"type": "module",
-	"version": "2.0.1"
+	"version": "2.0.2"
 }

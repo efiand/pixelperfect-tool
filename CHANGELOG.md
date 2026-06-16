@@ -2,6 +2,12 @@
 
 Формат — [Keep a Changelog](https://keepachangelog.com/ru/1.1.0/), версии — [SemVer](https://semver.org/lang/ru/).
 
+## [2.0.2] - 2026-06-16
+
+### Fixed
+
+- [`package.json`](package.json): убран `postinstall`, который ломал `npm install` у потребителей.
+
 ## [2.0.1] - 2026-06-16
 
 ### Fixed
@@ -15,7 +21,7 @@
 - Тесты (`node:test` + happy-dom): [`test/index.spec.js`](test/index.spec.js), [`test/lib/`](test/lib/), [`test/loader.spec.js`](test/loader.spec.js), [`test/vue/`](test/vue/), [`test/nuxt/`](test/nuxt/), [`test/tools/`](test/tools/); хелпер [`test/helpers/happy-dom.js`](test/helpers/happy-dom.js).
 - [`lib/ensure-pp-offsets.js`](lib/ensure-pp-offsets.js) — миграция `ppOffsets` в `localStorage` (ядро и Nuxt).
 - [`tools/check-function-order.js`](tools/check-function-order.js) — порядок top-level функций и JSDoc по образцу site-core.
-- [`tools/restore-rolldown-wasm-lockfile.js`](tools/restore-rolldown-wasm-lockfile.js), [`tools/postinstall.js`](tools/postinstall.js) — optional `@emnapi/*` для rolldown wasm не выпадают из lockfile на Windows.
+- [`tools/restore-rolldown-wasm-lockfile.js`](tools/restore-rolldown-wasm-lockfile.js) — optional `@emnapi/*` для rolldown wasm не выпадают из lockfile на Windows.
 - [`tools/upgrade-github-actions.js`](tools/upgrade-github-actions.js); `npm run upgrade` — devDependencies, browserslist-db, GitHub Actions.
 - Скрипты `verify` и `prepublishOnly` в [`package.json`](package.json) (lint + test + build перед `npm publish`).
 - Типы: [`types/pixelperfect.d.ts`](types/pixelperfect.d.ts), [`types/tools.d.ts`](types/tools.d.ts), [`types/npm.d.ts`](types/npm.d.ts), [`types/nuxt-runtime.d.ts`](types/nuxt-runtime.d.ts), [`types/import-meta.d.ts`](types/import-meta.d.ts), [`types/index.d.ts`](types/index.d.ts), colocated [`index.d.ts`](index.d.ts).
