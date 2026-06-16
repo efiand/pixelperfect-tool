@@ -2,6 +2,12 @@
 
 Формат — [Keep a Changelog](https://keepachangelog.com/ru/1.1.0/), версии — [SemVer](https://semver.org/lang/ru/).
 
+## [2.0.1] - 2026-06-16
+
+### Fixed
+
+- [`nuxt/runtime/pixelperfect-storage.client.js`](nuxt/runtime/pixelperfect-storage.client.js): убрана зависимость от глобального `defineNuxtPlugin` (устраняет `ReferenceError` в Nuxt runtime).
+
 ## [2.0.0] - 2026-06-15
 
 ### Added

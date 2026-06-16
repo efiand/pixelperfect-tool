@@ -2,6 +2,6 @@
 
 import { ensureValidPpOffsets } from '../../lib/ensure-pp-offsets.js';
 
-export default defineNuxtPlugin(() => {
+export default () => {
 	ensureValidPpOffsets();
-});
+};

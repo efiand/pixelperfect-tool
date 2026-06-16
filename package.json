@@ -56,5 +56,5 @@
 		"verify": "npm run lint && npm test && npm run build"
 	},
 	"type": "module",
-	"version": "2.0.0"
+	"version": "2.0.1"
 }
