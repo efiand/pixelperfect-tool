@@ -2,6 +2,19 @@
 
 Формат — [Keep a Changelog](https://keepachangelog.com/ru/1.1.0/), версии — [SemVer](https://semver.org/lang/ru/).
 
+## [2.0.3] - 2026-06-24
+
+### Removed
+
+- Nuxt client plugin [`nuxt/runtime/pixelperfect-storage.client.js`](nuxt/runtime/pixelperfect-storage.client.js): нормализация `localStorage.ppOffsets` уже выполняется в [`loadPixelperfect()`](index.js); отдельный плагин дублировал вызов, требовал `#app/nuxt` и давал предупреждение `not wrapped in defineNuxtPlugin` в Nuxt 4.
+- Глобальный `defineNuxtPlugin` в [`types/nuxt-runtime.d.ts`](types/nuxt-runtime.d.ts).
+
+### Changed
+
+- [`nuxt/index.js`](nuxt/index.js): модуль регистрирует только глобальный компонент `PixelperfectTool`.
+- [`README.md`](README.md): раздел Nuxt — один компонент, примеры на дефолтах либы (`folder: 'pixelperfect'`, `ext: 'jpg'`), `nitro.publicAssets` согласован с `folder`.
+- [`.npmignore`](.npmignore): явный список исключений из npm-пакета (тесты, tools, CI, config).
+
 ## [2.0.2] - 2026-06-16
 
 ### Fixed

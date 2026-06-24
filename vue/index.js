@@ -1,6 +1,7 @@
 import { defineComponent, onMounted } from 'vue';
 
 import { loadPixelperfect } from '../index.js';
+import { isDevEnvironment } from '../lib/is-dev-environment.js';
 
 export default defineComponent({
 	name: 'PixelperfectTool',
@@ -11,7 +12,7 @@ export default defineComponent({
 		},
 	},
 	setup(props, { slots }) {
-		if (import.meta.dev) {
+		if (isDevEnvironment()) {
 			onMounted(() => {
 				loadPixelperfect(props.options);
 			});

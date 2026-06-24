@@ -23,5 +23,8 @@
 	"emmet.preferences": {
 		"output.reverseAttributes": true
 	},
-	"prettier.enable": false
+	"prettier.enable": false,
+	"yaml.schemas": {
+		"./config/github-workflow.schema.json": ".github/workflows/*.{yml,yaml}"
+	}
 }

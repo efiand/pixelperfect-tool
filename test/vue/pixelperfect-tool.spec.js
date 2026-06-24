@@ -41,6 +41,24 @@ describe('vue/PixelperfectTool', () => {
 		assert.equal(loadPixelperfectMock.mock.callCount(), 0);
 	});
 
+	test('вызывает loadPixelperfect на mount в dev-окружении', async () => {
+		mock.module('../../lib/is-dev-environment.js', {
+			namedExports: {
+				isDevEnvironment: () => true,
+			},
+		});
+		installVueGlobals(createHappyDomWindow());
+		loadPixelperfectMock.mock.resetCalls();
+		const { mount } = await import('@vue/test-utils');
+		const { default: PixelperfectTool } = await import(`../../vue/index.js?dev=${Date.now()}`);
+		mount(PixelperfectTool, {
+			props: { options: { folder: 'pp' } },
+		});
+		assert.equal(loadPixelperfectMock.mock.callCount(), 1);
+		const callArgs = /** @type {unknown[]} */ (loadPixelperfectMock.mock.calls[0].arguments);
+		assert.deepEqual(callArgs[0], { folder: 'pp' });
+	});
+
 	test('имеет имя PixelperfectTool', async () => {
 		installVueGlobals(createHappyDomWindow());
 		const { mount } = await import('@vue/test-utils');
